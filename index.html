@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        #welcomeBanner{
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <!--Navigation-->
+    <nav>
+    <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="help.html" target="_blank">Help</a></li>
+    </ul>
+    </nav>
+
+    <!--Main-->
+    <section id="home">
+        <h1 id="mainHeader">Welcome to Local Community Event Portal</h1>
+        <div id="para"><p>Your one-stop destination for all local events and activities.</p></div>
+        <div id="welcomeBanner">
+            We're here to help you discover and participate in community events!
+        </div>
+        <p>
+            Register now to stay updated on the latest happenings in your area and connect with fellow community members.
+            <span style="color: #e74c3c; font-weight: bold;">Don't miss out!
+                20% off on event registrations for new users. Use code: WELCOME20
+            </span>
+                 
+        </p>
+        <p class="highlight">Join our community today!</p>
+    </section>
+
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <p>Check out the latest events in your community!</p>
+        <table>
+            <tr>
+                <td>
+                    <img src="Images/event1.jpg"
+                    alt="Music Festival"
+                    title="Music Festival"
+                    class="eventImage"
+                    ondblclick="enlargeImage(this)">
+                    <p>Music Festival - A day of live music and fun!</p>
+                </td>
+
+                <td>
+                    <img src="Images/event2.jpg"
+                    alt="Food Fair"
+                    title="Food Fair"
+                    class="eventImage">
+                    <p>Food Fair - Taste delicious dishes from local vendors!</p>
+                </td>
+
+                <td>
+                    <img src="Images/event3.jpg"
+                    alt="Yoga Camp"
+                    title="Yoga Camp"
+                    class="eventImage">
+                    <p>Yoga Camp - Reconnect with your body and mind!</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="Images/event5.jpg"
+                    alt="Workshop"
+                    title="Workshop"
+                    class="eventImage">
+                    <p>Workshop - Learn new skills and techniques!</p>
+                </td>
+
+                <td>
+                    <img src="Images/event6.jpg"
+                    alt="Blood Donation"
+                    title="Blood Donation"
+                    class="eventImage">
+                    <p>Blood Donation - Save lives by donating blood!</p>
+                </td>
+
+                <td>
+                    <img src="Images/event4.jpg"
+                    alt="Tree Plantation"
+                    title="Tree Plantation"
+                    class="eventImage">
+                    <p>Tree Plantation - Help the environment by planting trees!</p>
+                </td>
+            </tr>
+        </table>
+        <div class="eventCard">
+        <h2>Event Registration</h2>
+        <p>Register for your favorite events and never miss out on the fun!</p>
+        <form id="registrationForm">
+            <label>Name:</label>
+            <br>
+            <input type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                    autofocus>
+            <br><br>
+            <label>Email:</label>
+            <br>
+            <input type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+            <br><br>
+            <label>Event Date:</label>
+            <br>
+            <input type="date"
+                   id="eventDate"
+                   required>
+            <br><br>
+            <label>Preferred Event Type:</label>
+            <br>
+            <select id="preferredEvent"
+                        onchange="savePreference()"
+                        required>
+                <option value="">Select an event type</option>
+                <option>Music</option>
+                <option>Food</option>
+                <option>Yoga</option>
+                <option>Workshop</option>
+                <option>Blood Donation</option>
+                <option>Tree Plantation</option>
+            </select>
+            <br><br>
+            <label>Message:</label>
+            <br>
+            <textarea placeholder="Any special requirements or questions?" rows="4"></textarea>
+            <br><br>
+            <button type="button" onclick="registerEvent()">Register</button>
+            <br><br>
+            <p id="registrationMessage"></p>
+            
+
+        </form>
+        <button onclick="clearPreferences()">
+            Clear Preferences
+        </button>
+        </div>
+
+        <div class="eventCard">
+        <hr>
+        <h2>Event Feedback</h2>
+        <label>Phone Number:</label>
+        <br>
+        <input type="tel"
+                id="phone"
+                onblur="validatePhone()"
+                placeholder="Enter your phone number">
+        <p id="phoneMessage"></p>
+        <br>
+        <label>Select Event:</label>
+        <select id="eventSelect"
+                onchange="showFee()">
+            <option value="">Select an event</option>
+            <option value="100">Music Festival</option>
+            <option value="150">Food Fair</option>
+            <option value="200">Yoga Camp</option>
+            <option value="250">Workshop</option>
+            <option value="500">Blood Donation</option>
+            <option value="200">Tree Plantation</option>
+        </select>
+        <p id="feeDisplay"></p>
+        <textarea id="feedbackText" placeholder="Enter your feedback here..." rows="5" cols="50" oninput="countCharacters()"></textarea>
+        <p>Characters: <span id="charCount">0</span>/200</p>
+        <br>
+        <button onclick="showConfirmation()">
+            Submit Feedback
+        </button>
+        <br><br>
+        
+        </div>
+        <hr>
+        <h2>Community Event Promo</h2>
+        <video class="promoVideo"
+                controls
+                oncanplay="videoReady()">
+
+            <source src="videos/promo.mp4"
+                    type="video/mp4">
+            
+        </video>
+        <p id="videoMessage"></p>
+        <hr>
+        <h2>Find Nearby Events</h2>
+        <button onclick="findLocation()">
+            Find Nearby Events
+        </button>
+        <p id="locationResult"></p>
+
+        <p id="hiddenDemo">
+            Hidden Demo
+        </p>
+
+        <p id="noneDemo">
+            None Demo
+        </p>
+
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us at <span class="highlight">contact@community.com</span></p>
+    </section>
+
+    <section id="bulletin">
+        <h2>Community Bulletin</h2>
+        <div class="newsArticle">
+        The city council is organizing several community programs this month.
+        Residents are encouraged to participate in tree plantation drives,
+        health awareness campaigns, cultural festivals, and educational workshops.
+
+        Community engagement has increased significantly over the past year.
+        New initiatives include neighborhood clean-up drives, free health camps,
+        youth sports activities, and environmental awareness programs.
+
+        Volunteers are welcome to register for upcoming activities.
+        Special recognition certificates will be provided for active participation.
+        </div>
+
+    </section>
+
+
+
+    <!--Footer-->
+    <footer>
+        <p>&copy; 2026 Local Community Event Portal. All rights reserved.</p>
+    </footer>
+    <script src="main.js"></script>
+
+
+</body>
+</html>
