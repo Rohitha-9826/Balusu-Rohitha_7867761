@@ -1,8 +1,4 @@
-#Balusu-Rohitha_7867761
+# Balusu-Rohitha_7867761
 
-This repository contains my completed work for the Java FSE Upskilling Program.
-
-## Files
-
-`7867761.zip` - Contains all  my assignments, exercises, and project files.
-
+This repository contains my solutions and practice work completed as part of the Java Full Stack Engineering (FSE) Upskilling Program.
+Each folder in this repository represents a module or topic-wise set of solutions.
